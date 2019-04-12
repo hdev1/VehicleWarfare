@@ -1,0 +1,9 @@
+C:\Users\Hussein\source\repos\VehicleWarfare\VehicleWarfare\bin\Debug\VehicleWarfare.dll
+C:\Users\Hussein\source\repos\VehicleWarfare\VehicleWarfare\bin\Debug\VehicleWarfare.pdb
+C:\Users\Hussein\source\repos\VehicleWarfare\VehicleWarfare\bin\Debug\ScriptHookVDotNet2.dll
+C:\Users\Hussein\source\repos\VehicleWarfare\VehicleWarfare\obj\Debug\VehicleWarfare.csprojAssemblyReference.cache
+C:\Users\Hussein\source\repos\VehicleWarfare\VehicleWarfare\obj\Debug\VehicleWarfare.csproj.CoreCompileInputs.cache
+C:\Users\Hussein\source\repos\VehicleWarfare\VehicleWarfare\obj\Debug\VehicleWarfare.csproj.CopyComplete
+C:\Users\Hussein\source\repos\VehicleWarfare\VehicleWarfare\obj\Debug\VehicleWarfare.dll
+C:\Users\Hussein\source\repos\VehicleWarfare\VehicleWarfare\obj\Debug\VehicleWarfare.pdb
+C:\Users\Hussein\source\repos\VehicleWarfare\VehicleWarfare\bin\Debug\NativeUI.dll
