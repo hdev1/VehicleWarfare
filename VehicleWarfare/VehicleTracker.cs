@@ -22,8 +22,9 @@ namespace VehicleWarfare
         private static BarTimerBar nitrousBar;
         private static Stopwatch nitrousTimer;
         public static bool NitrousActivated = false;
-        public static Vehicle[] SavedVehicles;
+        public static List<SavedVehicle> SavedVehicles;
         public static int MaxSavedVehicles = 3;
+        public static Blip blip;
 
         public static void Init()
         {
@@ -36,6 +37,10 @@ namespace VehicleWarfare
             MenuManager.TimerBarPool.Add(vehicleDamageBar);
             MenuManager.TimerBarPool.Add(texttest);
             MenuManager.TimerBarPool.Add(texttest1);
+            SavedVehicles = new List<SavedVehicle>();
+            blip = World.CreateBlip(Game.Player.LastVehicle.Position);
+            blip.Sprite = BlipSprite.AssaultRifle;
+
         }
 
         public static void Update()
@@ -60,13 +65,15 @@ namespace VehicleWarfare
 
                     if (vehicleArmorMultiplier != 1)
                     {
-                        float healthChange = previousHealth- newHealth;
+                        float healthChange = previousHealth - newHealth;
                         float bodyHealthChange = previousBodyHealth - newBodyHealth;
-                        float petrolTankHealthChange = previousPetrolTankHealth- newPetrolTankHealth;
+                        float petrolTankHealthChange = previousPetrolTankHealth - newPetrolTankHealth;
                         float engineHealthChange = previousEngineHealth - newEngineHealth;
 
-                        Game.Player.Character.CurrentVehicle.Health = (int)(previousHealth - (healthChange / vehicleArmorMultiplier));
-                        Game.Player.Character.CurrentVehicle.BodyHealth = (int)(previousBodyHealth - (bodyHealthChange / vehicleArmorMultiplier));
+                        Game.Player.Character.CurrentVehicle.Health =
+                            (int) (previousHealth - (healthChange / vehicleArmorMultiplier));
+                        Game.Player.Character.CurrentVehicle.BodyHealth =
+                            (int) (previousBodyHealth - (bodyHealthChange / vehicleArmorMultiplier));
                         Game.Player.Character.CurrentVehicle.PetrolTankHealth =
                             (int) (previousPetrolTankHealth - (petrolTankHealthChange / vehicleArmorMultiplier));
                         Game.Player.Character.CurrentVehicle.EngineHealth =
@@ -78,43 +85,75 @@ namespace VehicleWarfare
                     previousEngineHealth = Game.Player.Character.CurrentVehicle.EngineHealth;
                     previousPetrolTankHealth = Game.Player.Character.CurrentVehicle.PetrolTankHealth;
                 }
-                
-                currentVehicle.ToggleMod(VehicleToggleMod.Turbo, true);
 
-                texttest.Text = Game.Player.Character.CurrentVehicle.EngineHealth.ToString();
-                texttest1.Text = Game.Player.Character.CurrentVehicle.BodyHealth.ToString();
-                vehicleDamageBar.Percentage = float.Parse(Game.Player.Character.CurrentVehicle.Health.ToString()) / float.Parse(Game.Player.Character.CurrentVehicle.MaxHealth.ToString());
+                currentVehicle.ToggleMod(VehicleToggleMod.Turbo, true);
+                //Game.Player.Character.CurrentVehicle.FriendlyName = "dAMN";
+                texttest.Text = Game.Player.Character.CurrentVehicle.IsPersistent.ToString();
+                texttest1.Text = vehicleArmorMultiplier.ToString() + " " + SavedVehicles.Count.ToString();
+                //texttest1.Text = Game.Player.Character.CurrentVehicle.BodyHealth.ToString();
+                vehicleDamageBar.Percentage = float.Parse(Game.Player.Character.CurrentVehicle.Health.ToString()) /
+                                              float.Parse(Game.Player.Character.CurrentVehicle.MaxHealth.ToString());
 
             }
 
+            // show blips
+            //Blip carBlip = new Blip(1) {Sprite = BlipSprite.SportsCar, Position = Game.Player.LastVehicle.Position};
+            blip.Position = Game.Player.LastVehicle.Position;
             // save vehicle coords
-            /*if (Game.Player.Character.IsJumpingOutOfVehicle)
+            if (SavedVehicles.Count > 0)
             {
-                if (Game.Player.Character.LastVehicle.IsPersistent)
+                UI.Notify(SavedVehicles.Count.ToString());
+                if (!Game.Player.Character.IsInVehicle())
                 {
-                    for (int i=0;i<SavedVehicles.Length;i++)
+                    if (Game.Player.Character.LastVehicle.IsPersistent)
                     {
-                        if (SavedVehicles[i].Model == Game.Player.Character.LastVehicle.Model)
+                        foreach (var savedVehicle in SavedVehicles)
                         {
-                            SavedVehicles[i] = Game.Player.Character.LastVehicle;
+                            if (savedVehicle.GameVehicle.Model == Game.Player.Character.LastVehicle.Model)
+                            {
+                                if (!Game.Player.Character.LastVehicle.IsDriveable)
+                                {
+                                    savedVehicle.IsSpawned = false;
+                                }
+                                else
+                                {
+                                    savedVehicle.GameVehicle = Game.Player.Character.LastVehicle;
+                                    savedVehicle.LastPosition = Game.Player.Character.LastVehicle.Position;
+                                }
+                                
+                            }
                         }
                     }
                 }
+                else if (Game.Player.Character.IsInVehicle())
+                {
+                    foreach (var t in SavedVehicles)
+                    {
+                        if (t.GameVehicle.Model == Game.Player.Character.CurrentVehicle.Model && Game.Player.Character.CurrentVehicle.IsPersistent)
+                        {
+                            if (!Game.Player.Character.CurrentVehicle.IsDriveable)
+                            {
+                                t.IsSpawned = false;
+                            } else { 
+                            if (vehicleArmorMultiplier != t.ArmorLevel)
+                                vehicleArmorMultiplier = t.ArmorLevel;
+                                //SavedVehicles[i].GameVehicle = Game.Player.Character.CurrentVehicle;
+                            }
+                        }
+                        else
+                        {
+                            
+                            vehicleArmorMultiplier = 1.0f;
+                        }
+                    }
+                }
+
             }
 
-
-            if (SavedVehicles.Length > 0)
-            {
-                foreach (var vehicle in SavedVehicles)
-                {
-                    
-                }
-            }*/
-        }
-
-        public static void SaveCar(Vehicle vehicle)
+            /*public static void SaveCar(SavedVehicle vehicle)
         {
             SavedVehicles.Append(vehicle);
+        }*/
         }
     }
 }

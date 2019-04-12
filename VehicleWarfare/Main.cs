@@ -1,6 +1,4 @@
-﻿// Native UI Menu Template 3.0 - Abel Software
-// You must download and use Scripthook V Dot Net Reference and NativeUI Reference (LINKS AT BOTTOM OF THE TEMPLATE)
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
@@ -8,6 +6,7 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Text;
 using GTA;
+using GTA.Math;
 using GTA.Native;
 using NativeUI;
 using VehicleWarfare;
@@ -41,7 +40,8 @@ public class Main : Script
     {
         if (e.KeyCode == Keys.Z)
         {
-            Game.Player.Character.CurrentVehicle.IsPersistent = true;
+            //Game.Player.Character.CurrentVehicle.IsPersistent = true;
+            Game.Player.Character.CurrentVehicle.ApplyForceRelative(new Vector3(0, 10, 10));
         }
     }
 

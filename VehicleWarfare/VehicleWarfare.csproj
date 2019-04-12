@@ -61,7 +61,13 @@
     <Compile Include="Menus\WeaponPurchase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopWeapon.cs" />
+    <Compile Include="SavedVehicle.cs" />
     <Compile Include="VehicleTracker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>echo Executing post build script...
+del "$(ProjectDir)bin\Debug\ScriptHook*.dll"
+copy "$(ProjectDir)bin\Debug\*.dll" "C:\Program Files\Rockstar Games\Grand Theft Auto V\scripts\"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
