@@ -13,6 +13,9 @@ namespace VehicleWarfare
         public Vehicle GameVehicle;
         public float ArmorLevel = 1;
         public Vector3 LastPosition;
+        public int HashCode;
+        public string DisplayName;
+        public Model Model;
         public bool IsSpawned;
     }
 }

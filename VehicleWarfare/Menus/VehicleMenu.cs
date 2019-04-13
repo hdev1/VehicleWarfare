@@ -46,12 +46,29 @@ namespace VehicleWarfare.Menus
                     Game.Player.Character.CurrentVehicle.IsPersistent = true;
                     SavedVehicle savedVehicle = new SavedVehicle
                     {
-                        GameVehicle = Game.Player.Character.CurrentVehicle,
+                        DisplayName = Game.Player.Character.CurrentVehicle.DisplayName,
+                        HashCode = Game.Player.Character.CurrentVehicle.GetHashCode(),
                         ArmorLevel = VehicleTracker.vehicleArmorMultiplier,
-                        IsSpawned = true
+                        IsSpawned = true,
+                        Model = Game.Player.Character.CurrentVehicle.Model
                     };
+                    UI.Notify(Game.Player.Character.CurrentVehicle.GetHashCode().ToString() + "-" + savedVehicle.HashCode.ToString());
+                    //UI.Notify();
 
-                    
+                    var blip = World.CreateBlip(Game.Player.Character.Position);
+                    blip.Sprite = BlipSprite.SportsCar;
+
+                    var veh = World.GetNearbyVehicles(Game.Player.Character.Position, 2000);
+                    foreach (var v in veh)
+                    {
+                        if (v.GetHashCode() == savedVehicle.HashCode)
+                        {
+                            savedVehicle.GameVehicle = v;
+                        }
+                    }
+
+                    VehicleTracker.Blips.Add(savedVehicle.DisplayName, blip);
+                        
                     VehicleTracker.SavedVehicles.Add(savedVehicle);
                 } else if (item == spawnVehicle)
                 {
@@ -60,10 +77,13 @@ namespace VehicleWarfare.Menus
                         if (!VehicleTracker.SavedVehicles[0].IsSpawned)
                         {
                             VehicleTracker.SavedVehicles[0].IsSpawned = true;
-                            var vehicle = World.CreateVehicle(VehicleTracker.SavedVehicles[0].GameVehicle.Model, Game.Player.Character.Position);
-                            vehicle = VehicleTracker.SavedVehicles[0].GameVehicle;
+                            var vehicle = World.CreateVehicle(VehicleTracker.SavedVehicles[0].Model, Game.Player.Character.Position);
                             vehicle.PlaceOnGround();
-
+                            VehicleTracker.SavedVehicles[0].GameVehicle = vehicle;
+                            VehicleTracker.SavedVehicles[0].HashCode = vehicle.GetHashCode();
+                            var blip = World.CreateBlip(vehicle.Position);
+                            blip.Sprite = BlipSprite.SportsCar;
+                            VehicleTracker.Blips.Add(vehicle.DisplayName, blip);
 
                         }
                     }

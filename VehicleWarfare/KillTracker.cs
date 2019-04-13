@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GTA;
+using GTA.Math;
 using GTA.Native;
 
 namespace VehicleWarfare
@@ -20,7 +21,9 @@ namespace VehicleWarfare
         public static void Update()
         {
             Ped[] peds = World.GetNearbyPeds(Game.Player.Character, 2000);
-            Vehicle[] vehicles = World.GetNearbyVehicles(Game.Player.Character, 2000);
+            Vector3 position = Game.Player.Character.Position;
+            Vehicle[] vehicles = World.GetNearbyVehicles(position, 2000);
+
 
             for (int i = 0; i < peds.Length; i++)
             {
@@ -70,6 +73,30 @@ namespace VehicleWarfare
 
             for (int i = 0; i < vehicles.Length; i++)
             {
+                for (var x = 0; x < VehicleTracker.SavedVehicles.ToList().Count; x++)
+                {
+                    var vehicle = VehicleTracker.SavedVehicles.ToList()[x];
+                    //UI.Notify(vehicle.
+                    //.GetHashCode().ToString() + " - " + vehicles[i].GetHashCode().ToString());
+                    if (vehicle.DisplayName == vehicles[i].DisplayName)
+                    {
+                        if (!vehicles[i].IsDriveable)
+                        {
+                            VehicleTracker.SavedVehicles[x].IsSpawned = false;
+                            for (var index = 0; index < VehicleTracker.Blips.ToList().Count; index++)
+                            {
+                                var blip = VehicleTracker.Blips.ToList()[index];
+                                if (blip.Key == Game.Player.Character.CurrentVehicle.DisplayName)
+                                {
+                                    //UI.Notify("grote poep");
+                                    blip.Value.Remove();
+                                    VehicleTracker.Blips.Remove(blip.Key);
+                                }
+                            }
+                        }
+                    }
+                }
+
                 if (vehicles[i].Exists() && vehicles[i].HasBeenDamagedBy(Game.Player.Character) && !vehicles[i].IsDriveable)
                 {
                     if (!VehicleList.Contains(vehicles[i].GetHashCode()))
