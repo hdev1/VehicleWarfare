@@ -102,90 +102,35 @@ namespace VehicleWarfare
                 }
             }
 
-            // show blips
-            foreach (var savedVehicle in SavedVehicles)
-            {
-                if (Blips.ContainsKey(savedVehicle.DisplayName))
-                {
-                    foreach (var blip in Blips)
-                    {
-                        if (blip.Key == savedVehicle.DisplayName)
-                        {
-                            blip.Value.Position = savedVehicle.LastPosition;
-                        }
-                    }
-                }
-            }
-            // save vehicle coords
+
+
             if (SavedVehicles.Count > 0)
             {
-                if (!Game.Player.Character.IsInVehicle())
+                foreach (var savedVehicle in SavedVehicles)
                 {
-                    if (Game.Player.Character.LastVehicle.IsPersistent)
+                    
+                    if (Game.Player.Character.IsInVehicle())
                     {
-                        foreach (var savedVehicle in SavedVehicles)
+                        if (savedVehicle.GameVehicle.GetHashCode() ==
+                            Game.Player.Character.CurrentVehicle.GetHashCode())
                         {
-                            if (savedVehicle.DisplayName == Game.Player.Character.LastVehicle.DisplayName)
-                            {
-                                if (!Game.Player.Character.LastVehicle.IsDriveable)
-                                {
-                                    savedVehicle.IsSpawned = false;
-                                    foreach (var blip in Blips.ToList())
-                                    {
-                                        if (blip.Key == Game.Player.Character.CurrentVehicle.DisplayName)
-                                        {
-                                            blip.Value.Remove();
-                                            Blips.Remove(blip.Key);
-                                            
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    //savedVehicle.GameVehicle = Game.Player.Character.LastVehicle;
-                                    savedVehicle.LastPosition = Game.Player.Character.LastVehicle.Position;
-
-                                    if (!Blips.ContainsKey(savedVehicle.DisplayName))
-                                    {
-                                        var blip = World.CreateBlip(savedVehicle.LastPosition);
-                                        blip.Sprite = BlipSprite.SportsCar;
-                                        Blips.Add(savedVehicle.DisplayName, blip);
-                                    }
-                                }
-                                
-                            }
+                            if (BlipManager.ContainsKey(savedVehicle.GameVehicle.GetHashCode().ToString()))
+                                BlipManager.Remove(savedVehicle.GameVehicle.GetHashCode().ToString());
                         }
                     }
-                }
-                else if (Game.Player.Character.IsInVehicle())
-                {
-                    foreach (var t in SavedVehicles)
+                    else
                     {
-                        if (t.Model == Game.Player.Character.CurrentVehicle.Model && Game.Player.Character.CurrentVehicle.IsPersistent)
+                        if (!BlipManager.ContainsKey(savedVehicle.GameVehicle.GetHashCode().ToString()) && savedVehicle.GameVehicle.IsDriveable)
                         {
-                            if (!Game.Player.Character.CurrentVehicle.IsDriveable)
-                            {
-                                t.IsSpawned = false;
-                                
-                            } else { 
-                            if (vehicleArmorMultiplier != t.ArmorLevel)
-                                vehicleArmorMultiplier = t.ArmorLevel;
-                                //SavedVehicles[i].GameVehicle = Game.Player.Character.CurrentVehicle;
-                            }
-                            foreach (var blip in Blips.ToList())
-                            {
-                                if (blip.Key == Game.Player.Character.CurrentVehicle.DisplayName)
-                                {
-                                    blip.Value.Remove();
-                                    Blips.Remove(blip.Key);
-                                }
-                            }
+                            BlipManager.Add(savedVehicle.GameVehicle.GetHashCode().ToString(), savedVehicle.GameVehicle.Position, BlipSprite.SportsCar);
                         }
-                        else
-                        {
-                            
-                            vehicleArmorMultiplier = 1.0f;
-                        }
+                        
+                    }
+                    if (!savedVehicle.GameVehicle.IsDriveable)
+                    {
+                        if (BlipManager.ContainsKey(savedVehicle.GameVehicle.GetHashCode().ToString()))
+                            BlipManager.Remove(savedVehicle.GameVehicle.GetHashCode().ToString());
+                        savedVehicle.IsSpawned = false;
                     }
                 }
 

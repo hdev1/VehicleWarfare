@@ -25,6 +25,7 @@ public class Main : Script
             Tick += OnTick;
 
             MenuManager.Init();
+            BlipManager.Init();
 
             config = ScriptSettings.Load("scripts\\settings.ini");
             OpenMenu = config.GetValue<Keys>("Options", "OpenMenu", Keys.F7);
@@ -57,6 +58,7 @@ public class Main : Script
         MenuManager.Update();
         KillTracker.Update();
         VehicleTracker.Update();
+        BlipManager.Update();
 
     }
 

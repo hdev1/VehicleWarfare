@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlipManager.cs" />
     <Compile Include="KillTracker.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Menus\MenuManager.cs" />

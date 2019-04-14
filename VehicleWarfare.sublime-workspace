@@ -1,0 +1,558 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"from",
+				"From"
+			],
+			[
+				"Opp",
+				"oppositeColorPieces"
+			],
+			[
+				"oppo",
+				"oppositeColorPieces"
+			],
+			[
+				"isWhi",
+				"IsWhite"
+			],
+			[
+				"header",
+				"headerStyle"
+			],
+			[
+				"comp",
+				"componentWillMount"
+			],
+			[
+				"jwt",
+				"jwtSecret"
+			],
+			[
+				"Login",
+				"LoginScreen"
+			],
+			[
+				"Order",
+				"OrdersScreen"
+			],
+			[
+				"n",
+				"navButtonIcon"
+			],
+			[
+				"navBu",
+				"navButtonIcon"
+			],
+			[
+				"mar",
+				"marginRight"
+			],
+			[
+				"navbut",
+				"navButtonIcon"
+			],
+			[
+				"recordlimi",
+				"recordLimits"
+			],
+			[
+				"head",
+				"heading"
+			],
+			[
+				"recordLimit",
+				"recordLimitIndex"
+			],
+			[
+				"recordL",
+				"recordLimitIndex"
+			],
+			[
+				"fielData",
+				"fieldDatasetIndexes"
+			],
+			[
+				"sortB",
+				"sortByField"
+			],
+			[
+				"sortedDa",
+				"sortedDataset"
+			],
+			[
+				"sorte",
+				"sortedDataset"
+			],
+			[
+				"alphabet",
+				"alphabetIndex"
+			],
+			[
+				"aplha",
+				"alphabetIndex"
+			],
+			[
+				"require",
+				"requireAuthentication"
+			],
+			[
+				"LeftN",
+				"LeftNavBarSection"
+			],
+			[
+				"Left",
+				"LeftNavBar"
+			],
+			[
+				"Leftnav",
+				"LeftNavBarHeading"
+			],
+			[
+				"Lef",
+				"LeftNavBarLink"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "VehicleWarfare/KillTracker.cs",
+			"settings":
+			{
+				"buffer_size": 4954,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/hdev/AppData/Roaming/Sublime Text 3/Packages/User/OmniSharp.sublime-build",
+			"settings":
+			{
+				"buffer_size": 1098,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "untitled.sublime-build"
+			}
+		}
+	],
+	"build_system": "Packages/User/OmniSharp.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/User/buildandroid.sublime-build",
+					""
+				],
+				[
+					"Packages/User/OmniSharp.sublime-build",
+					""
+				],
+				[
+					"Packages/User/OmniSharp.sublime-build",
+					"Clean"
+				],
+				[
+					"Packages/User/OmniSharp.sublime-build",
+					"ReBuild"
+				]
+			],
+			[
+				"Packages/User/OmniSharp.sublime-build",
+				"Clean"
+			]
+		]
+	],
+	"build_varint": "Clean",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"build with",
+				"Build With: C#-simple"
+			],
+			[
+				"build",
+				"Build With: OmniSharp - Clean"
+			],
+			[
+				"ui",
+				"UI: Select Theme"
+			],
+			[
+				"theme",
+				"UI: Select Theme"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"omni",
+				"OmniSharpSublime: Restart Server"
+			],
+			[
+				"sidebar",
+				"View: Toggle Side Bar"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"toggle menu",
+				"View: Toggle Menu"
+			],
+			[
+				"word wra",
+				"Word Wrap: Toggle"
+			],
+			[
+				"side bar",
+				"View: Toggle Side Bar"
+			],
+			[
+				"word",
+				"Word Wrap: Toggle"
+			],
+			[
+				"tabs",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"jspret",
+				"JsPrettier: Format Code"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"jsp",
+				"JsPrettier: Format Code"
+			],
+			[
+				"jspre",
+				"JsPrettier: Format Code"
+			],
+			[
+				"js",
+				"JsPrettier: Format Code"
+			],
+			[
+				"sublime",
+				"SublimeLinter: Toggle Highlights"
+			],
+			[
+				"subli",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"prett",
+				"JsPrettier: Format Code"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			],
+			[
+				"browser",
+				"Browser Integration: Launch Browser"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"jsprett",
+				"JsPrettier: Format Code"
+			],
+			[
+				"pretter",
+				"JsPrettier: Format Code"
+			],
+			[
+				"installpack",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"install pac",
+				"Install Package Control"
+			],
+			[
+				"toggle  menu",
+				"View: Toggle Menu"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 136.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/hdev/Documents/GitHub/VehicleWarfare",
+		"/C/Users/hdev/Documents/GitHub/VehicleWarfare/VehicleWarfare"
+	],
+	"file_history":
+	[
+		"/C/Users/hdev/Documents/GitHub/VehicleWarfare/VehicleWarfare.sublime-project",
+		"/C/Users/hdev/source/repos/Chess/Chess/Chess.csproj",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/index.js",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/controllers/adminController.js",
+		"/C/Users/hdev/Documents/OZ Repair/mobile/ozrepairmobile/android/local.properties",
+		"/C/Users/hdev/Documents/OZ Repair/mobile/ozrepair-mobile/android/build.gradle",
+		"/C/Users/hdev/Documents/OZ Repair/mobile/ozrepair-mobile/android/settings.gradle",
+		"/C/Users/hdev/Documents/OZ Repair/mobile/ozrepair-mobile/android/gradle.properties",
+		"/C/Users/hdev/Documents/ozrepair-mobile/app.json",
+		"/C/Users/hdev/Documents/OZ Repair/mobile/ozrepair-mobile/android/app/build/intermediates/manifests/full/debug/AndroidManifest.xml",
+		"/C/Users/hdev/Documents/OZ Repair/mobile/ozrepair-mobile/app.json",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/dist/bundle.js",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/routes/user.js",
+		"/C/Users/hdev/Documents/OZ Repair/mobile/ozrepair-mobile/App.js",
+		"/C/Users/hdev/Documents/ozrepair-mobile/App.js",
+		"/C/Users/hdev/Documents/ozrepair-mobile/android/app/src/main/java/com/ozrepair-mobile/MainActivity.java",
+		"/C/Users/hdev/Documents/ozrepair-mobile/android/build.gradle",
+		"/C/Users/hdev/Documents/ozrepair-mobile/android/settings.gradle",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/src/components/Admin/Repairs.js",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/src/components/App.js",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/src/index.js",
+		"/C/Users/hdev/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/src/components/Admin/Customers.js",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/src/components/Admin/Admin.css",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/package.json",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/.babelrc",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/webpack.config.js",
+		"/C/Users/hdev/Documents/OZ Repair/resources/Dashboard Template for Bootstrap_files/dashboard.css",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/routes/admin.js",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/controllers/userController.js",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/package-lock.json",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/src/components/Admin/Admin.js",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/test/dataGenerator.js",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/test/data.json",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/routes/auth.js",
+		"/C/Users/hdev/Documents/GitHub/ozrepair/dist/Admin.css"
+	],
+	"find":
+	{
+		"height": 70.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"xbuild",
+			"bin",
+			"/usr"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"msbuild"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "VehicleWarfare/KillTracker.cs",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 4954,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								799,
+								800
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/hdev/AppData/Roaming/Sublime Text 3/Packages/User/OmniSharp.sublime-build",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1098,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1096,
+								1096
+							]
+						],
+						"settings":
+						{
+							"SL.54.region_keys":
+							[
+							],
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 41.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.exec":
+	{
+		"height": 265.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "VehicleWarfare.sublime-project",
+	"replace":
+	{
+		"height": 114.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 217.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

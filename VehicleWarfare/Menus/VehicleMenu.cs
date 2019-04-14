@@ -52,11 +52,11 @@ namespace VehicleWarfare.Menus
                         IsSpawned = true,
                         Model = Game.Player.Character.CurrentVehicle.Model
                     };
-                    UI.Notify(Game.Player.Character.CurrentVehicle.GetHashCode().ToString() + "-" + savedVehicle.HashCode.ToString());
+                    //UI.Notify(Game.Player.Character.CurrentVehicle.GetHashCode().ToString() + "-" + savedVehicle.HashCode.ToString());
                     //UI.Notify();
 
-                    var blip = World.CreateBlip(Game.Player.Character.Position);
-                    blip.Sprite = BlipSprite.SportsCar;
+                    //var blip = World.CreateBlip(Game.Player.Character.Position);
+                    //blip.Sprite = BlipSprite.SportsCar;
 
                     var veh = World.GetNearbyVehicles(Game.Player.Character.Position, 2000);
                     foreach (var v in veh)
@@ -67,7 +67,7 @@ namespace VehicleWarfare.Menus
                         }
                     }
 
-                    VehicleTracker.Blips.Add(savedVehicle.DisplayName, blip);
+                    //VehicleTracker.Blips.Add(savedVehicle.DisplayName, blip);
                         
                     VehicleTracker.SavedVehicles.Add(savedVehicle);
                 } else if (item == spawnVehicle)
@@ -81,9 +81,9 @@ namespace VehicleWarfare.Menus
                             vehicle.PlaceOnGround();
                             VehicleTracker.SavedVehicles[0].GameVehicle = vehicle;
                             VehicleTracker.SavedVehicles[0].HashCode = vehicle.GetHashCode();
-                            var blip = World.CreateBlip(vehicle.Position);
-                            blip.Sprite = BlipSprite.SportsCar;
-                            VehicleTracker.Blips.Add(vehicle.DisplayName, blip);
+                            //var blip = World.CreateBlip(vehicle.Position);
+                            //blip.Sprite = BlipSprite.SportsCar;
+                            //VehicleTracker.Blips.Add(vehicle.DisplayName, blip);
 
                         }
                     }
