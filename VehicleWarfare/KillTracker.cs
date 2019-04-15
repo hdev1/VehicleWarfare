@@ -75,10 +75,10 @@ namespace VehicleWarfare
             {
                 for (var x = 0; x < VehicleTracker.SavedVehicles.ToList().Count; x++)
                 {
-                    var vehicle = VehicleTracker.SavedVehicles.ToList()[x];
+                    /*var vehicle = VehicleTracker.SavedVehicles.ToList()[x];
                     //UI.Notify(vehicle.
                     //.GetHashCode().ToString() + " - " + vehicles[i].GetHashCode().ToString());
-                    if (vehicle.DisplayName == vehicles[i].DisplayName)
+                    if (vehicle.GameVehicle.DisplayName == vehicles[i].DisplayName)
                     {
                         if (!vehicles[i].IsDriveable)
                         {
@@ -88,13 +88,12 @@ namespace VehicleWarfare
                                 var blip = VehicleTracker.Blips.ToList()[index];
                                 if (blip.Key == Game.Player.Character.CurrentVehicle.DisplayName)
                                 {
-                                    //UI.Notify("grote poep");
                                     blip.Value.Remove();
                                     VehicleTracker.Blips.Remove(blip.Key);
                                 }
                             }
                         }
-                    }
+                    }*/
                 }
 
                 if (vehicles[i].Exists() && vehicles[i].HasBeenDamagedBy(Game.Player.Character) && !vehicles[i].IsDriveable)

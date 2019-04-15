@@ -40,67 +40,82 @@ namespace VehicleWarfare
             SavedVehicles = new List<SavedVehicle>();
         }
 
-        public static void Update()
+        private static void UpdateVehicles()
         {
-            if (Game.Player.Character.IsInVehicle())
+            foreach (var vehicle in SavedVehicles)
             {
-                MenuManager.TimerBarPool.Draw();
-                var currentVehicle = Game.Player.Character.CurrentVehicle;
+                var newBodyHealth = vehicle.GameVehicle.BodyHealth;
+                var newHealth = vehicle.GameVehicle.Health;
+                var newPetrolTankHealth = vehicle.GameVehicle.PetrolTankHealth;
+                var newEngineHealth = vehicle.GameVehicle.EngineHealth;
 
-                currentVehicle.EngineTorqueMultiplier = 5.0f;
-
-                if (previousBodyHealth == -1.0f)
+                if (vehicle.ArmorLevel != 1.0f)
                 {
-                    previousBodyHealth = currentVehicle.Health;
+                    float healthChange = vehicle.PreviousHealth - newHealth;
+                    float bodyHealthChange = vehicle.PreviousBodyHealth - newBodyHealth;
+                    float petrolTankHealthChange = vehicle.PreviousPetrolTankHealth - newPetrolTankHealth;
+                    float engineHealthChange = vehicle.PreviousEngineHealth - newEngineHealth;
+
+                    vehicle.GameVehicle.Health =
+                        (int) (vehicle.PreviousHealth - (healthChange / vehicleArmorMultiplier));
+                    vehicle.GameVehicle.BodyHealth =
+                        (int) (vehicle.PreviousBodyHealth - (bodyHealthChange / vehicleArmorMultiplier));
+                    vehicle.GameVehicle.PetrolTankHealth =
+                        (int) (vehicle.PreviousPetrolTankHealth - (petrolTankHealthChange / vehicleArmorMultiplier));
+                    vehicle.GameVehicle.EngineHealth =
+                        (int) (vehicle.PreviousEngineHealth - (engineHealthChange / vehicleArmorMultiplier));
+                }
+
+                vehicle.PreviousHealth = vehicle.GameVehicle.Health;
+                vehicle.PreviousBodyHealth = vehicle.GameVehicle.BodyHealth;
+                vehicle.PreviousEngineHealth = vehicle.GameVehicle.EngineHealth;
+                vehicle.PreviousPetrolTankHealth = vehicle.GameVehicle.PetrolTankHealth;
+
+                if (vehicle.NitrousActivated)
+                {
+                    if (!vehicle.NitrousTimer.IsRunning) vehicle.NitrousTimer.Start();
+                    if (vehicle.NitrousAmount > 0.0f)
+                    {
+                        
+                    }
                 }
                 else
                 {
-                    var newBodyHealth = currentVehicle.BodyHealth;
-                    var newHealth = currentVehicle.Health;
-                    var newPetrolTankHealth = currentVehicle.PetrolTankHealth;
-                    var newEngineHealth = currentVehicle.EngineHealth;
-
-                    if (vehicleArmorMultiplier != 1)
-                    {
-                        float healthChange = previousHealth - newHealth;
-                        float bodyHealthChange = previousBodyHealth - newBodyHealth;
-                        float petrolTankHealthChange = previousPetrolTankHealth - newPetrolTankHealth;
-                        float engineHealthChange = previousEngineHealth - newEngineHealth;
-
-                        Game.Player.Character.CurrentVehicle.Health =
-                            (int) (previousHealth - (healthChange / vehicleArmorMultiplier));
-                        Game.Player.Character.CurrentVehicle.BodyHealth =
-                            (int) (previousBodyHealth - (bodyHealthChange / vehicleArmorMultiplier));
-                        Game.Player.Character.CurrentVehicle.PetrolTankHealth =
-                            (int) (previousPetrolTankHealth - (petrolTankHealthChange / vehicleArmorMultiplier));
-                        Game.Player.Character.CurrentVehicle.EngineHealth =
-                            (int) (previousEngineHealth - (engineHealthChange / vehicleArmorMultiplier));
-                    }
-
-                    previousHealth = Game.Player.Character.CurrentVehicle.Health;
-                    previousBodyHealth = Game.Player.Character.CurrentVehicle.BodyHealth;
-                    previousEngineHealth = Game.Player.Character.CurrentVehicle.EngineHealth;
-                    previousPetrolTankHealth = Game.Player.Character.CurrentVehicle.PetrolTankHealth;
+                    vehicle.NitrousTimer.Stop();
                 }
+            }
+
+
+        }
+
+        public static void Update()
+        {
+            //if (Game.Player.Character.IsInVehicle())
+            //{
+                MenuManager.TimerBarPool.Draw();
+            //}
 
                 //currentVehicle.ToggleMod(VehicleToggleMod.Turbo, true);
                 //Game.Player.Character.CurrentVehicle.FriendlyName = "dAMN";
                 
-                texttest1.Text = vehicleArmorMultiplier.ToString() + " " + SavedVehicles.Count.ToString();
+                //texttest1.Text = vehicleArmorMultiplier.ToString() + " " + SavedVehicles.Count.ToString();
                 //texttest1.Text = Game.Player.Character.CurrentVehicle.BodyHealth.ToString();
-                vehicleDamageBar.Percentage = float.Parse(Game.Player.Character.CurrentVehicle.Health.ToString()) /
-                                              float.Parse(Game.Player.Character.CurrentVehicle.MaxHealth.ToString());
+                //vehicleDamageBar.Percentage = float.Parse(Game.Player.Character.CurrentVehicle.Health.ToString()) /
+                  //                            float.Parse(Game.Player.Character.CurrentVehicle.MaxHealth.ToString());
 
-            }
             //texttest.Text = Game.Player.Character.LastVehicle.IsDriveable.ToString();
 
             if (SavedVehicles.Count > 0)
             {
+                UpdateVehicles();
                 if (SavedVehicles[0].GameVehicle != null)
                 {
-                    texttest.Text = SavedVehicles[0].GameVehicle.Position.X.ToString();
+                    texttest.Text = SavedVehicles[0].NitrousAmount.ToString();
                 }
+
             }
+
+            
 
 
 
@@ -135,11 +150,6 @@ namespace VehicleWarfare
                 }
 
             }
-
-            /*public static void SaveCar(SavedVehicle vehicle)
-        {
-            SavedVehicles.Append(vehicle);
-        }*/
         }
     }
 }

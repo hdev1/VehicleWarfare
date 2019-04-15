@@ -44,6 +44,33 @@ public class Main : Script
             //Game.Player.Character.CurrentVehicle.IsPersistent = true;
             Game.Player.Character.CurrentVehicle.ApplyForceRelative(new Vector3(0, 10, 10));
         }
+
+        foreach (var vehicle in VehicleTracker.SavedVehicles)
+        {
+            if (vehicle.GameVehicle.GetHashCode() == Game.Player.Character.CurrentVehicle.GetHashCode())
+            {
+                vehicle.NitrousActivated = false;
+            }
+        }
+        if (e.KeyCode == Keys.X)
+        {
+            foreach (var vehicle in VehicleTracker.SavedVehicles)
+            {
+                if (vehicle.GameVehicle.GetHashCode() == Game.Player.Character.CurrentVehicle.GetHashCode())
+                {
+                    vehicle.NitrousActivated = true;
+                }
+            }
+        }
+
+        if (e.KeyCode == Keys.J)
+        {
+            World.ShootBullet(
+                Game.Player.Character.CurrentVehicle.Position,
+                VehicleTracker.SavedVehicles[0].GameVehicle.Position, 
+                Game.Player.Character, new Model(WeaponHash.Ball),
+                20);
+        }
     }
 
 

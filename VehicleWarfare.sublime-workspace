@@ -4,6 +4,7 @@
 		"selected_items":
 		[
 			[
+<<<<<<< Updated upstream
 				"from",
 				"From"
 			],
@@ -114,12 +115,29 @@
 			[
 				"Lef",
 				"LeftNavBarLink"
+=======
+				"getcost",
+				"getCostFromLevel"
+			],
+			[
+				"humanread",
+				"humanReadableAttribute"
+			],
+			[
+				"humanrea",
+				"humanReadableAttribute"
+			],
+			[
+				"humanRead",
+				"humanReadableAttribute"
+>>>>>>> Stashed changes
 			]
 		]
 	},
 	"buffers":
 	[
 		{
+<<<<<<< Updated upstream
 			"file": "VehicleWarfare/KillTracker.cs",
 			"settings":
 			{
@@ -168,6 +186,22 @@
 		]
 	],
 	"build_varint": "Clean",
+=======
+			"file": "VehicleWarfare.sublime-project",
+			"settings":
+			{
+				"buffer_size": 156,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+>>>>>>> Stashed changes
 	"command_palette":
 	{
 		"height": 0.0,
@@ -175,6 +209,7 @@
 		"selected_items":
 		[
 			[
+<<<<<<< Updated upstream
 				"build with",
 				"Build With: C#-simple"
 			],
@@ -191,10 +226,13 @@
 				"UI: Select Theme"
 			],
 			[
+=======
+>>>>>>> Stashed changes
 				"install",
 				"Package Control: Install Package"
 			],
 			[
+<<<<<<< Updated upstream
 				"omni",
 				"OmniSharpSublime: Restart Server"
 			],
@@ -207,10 +245,17 @@
 				"Package Control: Install Package"
 			],
 			[
+=======
+				"omnisharp",
+				"OmniSharpSublime: Restart Server"
+			],
+			[
+>>>>>>> Stashed changes
 				"toggle menu",
 				"View: Toggle Menu"
 			],
 			[
+<<<<<<< Updated upstream
 				"word wra",
 				"Word Wrap: Toggle"
 			],
@@ -257,12 +302,29 @@
 			[
 				"subli",
 				"SublimeLinter: Lint This View"
+=======
+				"status",
+				"View: Toggle Status Bar"
+			],
+			[
+				"toggle tabs",
+				"View: Toggle Tabs"
+			],
+			[
+				"toggle",
+				"View: Toggle Menu"
+			],
+			[
+				"TOGGLE MENU",
+				"View: Toggle Menu"
+>>>>>>> Stashed changes
 			],
 			[
 				"prett",
 				"JsPrettier: Format Code"
 			],
 			[
+<<<<<<< Updated upstream
 				"install p",
 				"Package Control: Install Package"
 			],
@@ -296,6 +358,17 @@
 			],
 			[
 				"toggle  menu",
+=======
+				"toggle minimap",
+				"View: Toggle Minimap"
+			],
+			[
+				"toggle status",
+				"View: Toggle Status Bar"
+			],
+			[
+				"toggl",
+>>>>>>> Stashed changes
 				"View: Toggle Menu"
 			]
 		],
@@ -303,9 +376,16 @@
 	},
 	"console":
 	{
+<<<<<<< Updated upstream
 		"height": 136.0,
 		"history":
 		[
+=======
+		"height": 436.0,
+		"history":
+		[
+			"f"
+>>>>>>> Stashed changes
 		]
 	},
 	"distraction_free":
@@ -319,6 +399,7 @@
 	},
 	"expanded_folders":
 	[
+<<<<<<< Updated upstream
 		"/C/Users/hdev/Documents/GitHub/VehicleWarfare",
 		"/C/Users/hdev/Documents/GitHub/VehicleWarfare/VehicleWarfare"
 	],
@@ -364,6 +445,33 @@
 	"find":
 	{
 		"height": 70.0
+=======
+		"/C/Users/Hussein/Documents/VehicleWarfare/VehicleWarfare",
+		"/C/Users/Hussein/Documents/VehicleWarfare/VehicleWarfare/VehicleWarfare"
+	],
+	"file_history":
+	[
+		"/C/Users/Hussein/Documents/VehicleWarfare/VehicleWarfare/x",
+		"/D/s2k-universal-core/lib/constants/index.js",
+		"/D/s2k-universal-core/lib/player-creation/index.js",
+		"/D/s2k-universal-core/lib/player/index.js",
+		"/C/Users/Hussein/Documents/Test/Assets/scr.cs",
+		"/D/s2k-universal-core/helpers/module-manager/index.js",
+		"/D/freestyle",
+		"/D/s2k-universal-core/data/starting-attributes.json",
+		"/D/bustanut",
+		"/D/beyond the gates aantekeningen.txt",
+		"/D/numb me.txt",
+		"/D/rest in basra",
+		"/D/untiled EP",
+		"/D/suicide",
+		"/C/Users/Hussein/Documents/agile.js",
+		"/C/Users/Hussein/Documents/game/docs/INDEX.md"
+	],
+	"find":
+	{
+		"height": 44.0
+>>>>>>> Stashed changes
 	},
 	"find_in_files":
 	{
@@ -377,9 +485,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+<<<<<<< Updated upstream
 			"xbuild",
 			"bin",
 			"/usr"
+=======
+>>>>>>> Stashed changes
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -387,7 +498,10 @@
 		"regex": false,
 		"replace_history":
 		[
+<<<<<<< Updated upstream
 			"msbuild"
+=======
+>>>>>>> Stashed changes
 		],
 		"reverse": false,
 		"show_context": true,
@@ -403,6 +517,7 @@
 			[
 				{
 					"buffer": 0,
+<<<<<<< Updated upstream
 					"file": "VehicleWarfare/KillTracker.cs",
 					"semi_transient": true,
 					"settings":
@@ -438,28 +553,47 @@
 					"settings":
 					{
 						"buffer_size": 1098,
+=======
+					"file": "VehicleWarfare.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 156,
+>>>>>>> Stashed changes
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< Updated upstream
 								1096,
 								1096
+=======
+								1,
+								1
+>>>>>>> Stashed changes
 							]
 						],
 						"settings":
 						{
+<<<<<<< Updated upstream
 							"SL.54.region_keys":
 							[
 							],
+=======
+>>>>>>> Stashed changes
 							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< Updated upstream
 					"stack_index": 1,
+=======
+					"stack_index": 0,
+>>>>>>> Stashed changes
 					"type": "text"
 				}
 			]
@@ -467,11 +601,19 @@
 	],
 	"incremental_find":
 	{
+<<<<<<< Updated upstream
 		"height": 26.0
 	},
 	"input":
 	{
 		"height": 41.0
+=======
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 40.0
+>>>>>>> Stashed changes
 	},
 	"layout":
 	{
@@ -496,6 +638,7 @@
 		]
 	},
 	"menu_visible": false,
+<<<<<<< Updated upstream
 	"output.SublimeLinter":
 	{
 		"height": 0.0
@@ -503,6 +646,11 @@
 	"output.exec":
 	{
 		"height": 265.0
+=======
+	"output.exec":
+	{
+		"height": 138.0
+>>>>>>> Stashed changes
 	},
 	"output.find_results":
 	{
@@ -512,7 +660,11 @@
 	"project": "VehicleWarfare.sublime-project",
 	"replace":
 	{
+<<<<<<< Updated upstream
 		"height": 114.0
+=======
+		"height": 60.0
+>>>>>>> Stashed changes
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -546,11 +698,19 @@
 	"settings":
 	{
 	},
+<<<<<<< Updated upstream
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 217.0,
+=======
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 225.0,
+>>>>>>> Stashed changes
 	"status_bar_visible": true,
 	"template_settings":
 	{
