@@ -79,20 +79,14 @@ namespace VehicleWarfare.Menus
                         {
                             VehicleTracker.SavedVehicles[0].IsSpawned = true;
                             var vehicle = World.CreateVehicle(VehicleTracker.SavedVehicles[0].GameVehicle.Model, Game.Player.Character.Position);
-
                             vehicle.PlaceOnGround();
-
                             VehicleTracker.SavedVehicles[0].GameVehicle = vehicle;
 
                             VehicleTracker.SavedVehicles[0].PreviousHealth = vehicle.Health;
                             VehicleTracker.SavedVehicles[0].PreviousBodyHealth = vehicle.BodyHealth;
                             VehicleTracker.SavedVehicles[0].PreviousEngineHealth = vehicle.EngineHealth;
                             VehicleTracker.SavedVehicles[0].PreviousPetrolTankHealth = vehicle.PetrolTankHealth;
-
-                            //var blip = World.CreateBlip(vehicle.Position);
-                            //blip.Sprite = BlipSprite.SportsCar;
-                            //VehicleTracker.Blips.Add(vehicle.DisplayName, blip);
-
+                            VehicleTracker.SavedVehicles[0].GameVehicle.IsPersistent = true;
                         }
                     }
                 }

@@ -20,15 +20,18 @@ public class Main : Script
 
     public Main()
         {
-            KeyUp += OnKeyUp;
             KeyDown += OnKeyDown;
+            KeyUp += OnKeyUp;
             Tick += OnTick;
 
             MenuManager.Init();
             BlipManager.Init();
-
+            DebugInfo.Init();
+            
             config = ScriptSettings.Load("scripts\\settings.ini");
             OpenMenu = config.GetValue<Keys>("Options", "OpenMenu", Keys.F7);
+
+            World.DestroyAllCameras();
 
             KeyDown += (o, e) =>
             {
@@ -45,13 +48,13 @@ public class Main : Script
             Game.Player.Character.CurrentVehicle.ApplyForceRelative(new Vector3(0, 10, 10));
         }
 
-        foreach (var vehicle in VehicleTracker.SavedVehicles)
+        /* foreach (var vehicle in VehicleTracker.SavedVehicles)
         {
             if (vehicle.GameVehicle.GetHashCode() == Game.Player.Character.CurrentVehicle.GetHashCode())
             {
                 vehicle.NitrousActivated = false;
             }
-        }
+        }*/
         if (e.KeyCode == Keys.X)
         {
             foreach (var vehicle in VehicleTracker.SavedVehicles)
@@ -63,22 +66,60 @@ public class Main : Script
             }
         }
 
-        if (e.KeyCode == Keys.J)
+        if (e.KeyCode == Keys.N)
         {
-            World.ShootBullet(
-                Game.Player.Character.CurrentVehicle.Position,
-                VehicleTracker.SavedVehicles[0].GameVehicle.Position, 
-                Game.Player.Character, new Model(WeaponHash.Ball),
-                20);
+            World.ShootBullet(Game.Player.Character.Position,
+                World.GetClosestVehicle(Game.Player.Character.Position, 500.0f).Position,
+                Game.Player.Character, new Model("w_lr_homing_rocket"), 20);
+        }
+
+        // Test
+        if (e.KeyCode == Keys.H) {
+            /* var camera = World.CreateCamera(new Vector3(Game.Player.Character.Position.X, Game.Player.Character.Position.Y, Game.Player.Character.Position.Z), new Vector3(180, 180, 180), 180.0f);
+            World.RenderingCamera = camera;
+            //Game.DisableControl(0, Game.Player);
+            Game.Player.CanControlCharacter = false;
+            Game.FadeScreenOut(100);
+            Game.FadeScreenIn(100);*/
+            Garage.Enter();
+        } else if (e.KeyCode == Keys.T) {
+            Garage.Leave();
+        }
+
+        if (e.KeyCode == Keys.W) CameraManager.CurrentCamera.Position = new Vector3(CameraManager.CurrentCamera.Position.X - 0.1f, CameraManager.CurrentCamera.Position.Y, CameraManager.CurrentCamera.Position.Z);
+        if (e.KeyCode == Keys.S) CameraManager.CurrentCamera.Position = new Vector3(CameraManager.CurrentCamera.Position.X + 0.1f, CameraManager.CurrentCamera.Position.Y, CameraManager.CurrentCamera.Position.Z);
+        if (e.KeyCode == Keys.A) CameraManager.CurrentCamera.Position = new Vector3(CameraManager.CurrentCamera.Position.X, CameraManager.CurrentCamera.Position.Y - 0.1f, CameraManager.CurrentCamera.Position.Z);
+        if (e.KeyCode == Keys.D) CameraManager.CurrentCamera.Position = new Vector3(CameraManager.CurrentCamera.Position.X, CameraManager.CurrentCamera.Position.Y + 0.1f, CameraManager.CurrentCamera.Position.Z);
+        
+        if (e.KeyCode == Keys.J) {
+            CameraManager.CurrentCamera.Rotation = new Vector3(CameraManager.CurrentCamera.Rotation.X + 1.0f, CameraManager.CurrentCamera.Rotation.Y, CameraManager.CurrentCamera.Rotation.Z);
+        } else if (e.KeyCode == Keys.K) {
+            CameraManager.CurrentCamera.Rotation = new Vector3(CameraManager.CurrentCamera.Rotation.X, CameraManager.CurrentCamera.Rotation.Y + 1.0f, CameraManager.CurrentCamera.Rotation.Z);
+        } else if (e.KeyCode == Keys.L) {
+            CameraManager.CurrentCamera.Rotation = new Vector3(CameraManager.CurrentCamera.Rotation.X, CameraManager.CurrentCamera.Rotation.Y, CameraManager.CurrentCamera.Rotation.Z + 1.0f);
+        }
+
+        if (e.KeyCode == Keys.I) {
+            CameraManager.CurrentCamera.Position = new Vector3(CameraManager.CurrentCamera.Position.X, CameraManager.CurrentCamera.Position.Y, CameraManager.CurrentCamera.Position.Z + 0.1f);
+        }
+        if (e.KeyCode == Keys.O) {
+            CameraManager.CurrentCamera.Position = new Vector3(CameraManager.CurrentCamera.Position.X, CameraManager.CurrentCamera.Position.Y, CameraManager.CurrentCamera.Position.Z - 0.1f);
+
         }
     }
 
-
-    private void OnKeyUp(object sender, KeyEventArgs e)
-    {
-        
+    private void OnKeyUp(object sender, KeyEventArgs e) {
+        if (e.KeyCode == Keys.X)
+        {
+            foreach (var vehicle in VehicleTracker.SavedVehicles)
+            {
+                if (vehicle.GameVehicle.GetHashCode() == Game.Player.Character.CurrentVehicle.GetHashCode())
+                {
+                    vehicle.NitrousActivated = false;
+                }
+            }
+        }
     }
-
     private void OnTick(object sender, EventArgs e)
     {
         // Process menus
@@ -86,37 +127,12 @@ public class Main : Script
         KillTracker.Update();
         VehicleTracker.Update();
         BlipManager.Update();
+        MenuManager.TimerBarPool.Draw();
+        if (CameraManager.CurrentCamera != null) {
+            DebugInfo.Bar1.Text = Math.Round(CameraManager.CurrentCamera.Rotation.X, 2).ToString() + ", " + Math.Round(CameraManager.CurrentCamera.Rotation.Y, 2).ToString() + ", " + Math.Round(CameraManager.CurrentCamera.Rotation.Z, 2).ToString();
+            DebugInfo.Bar2.Text = Math.Round(CameraManager.CurrentCamera.Position.X, 2).ToString() + ", " + Math.Round(CameraManager.CurrentCamera.Position.Y, 2).ToString() + ", " + Math.Round(CameraManager.CurrentCamera.Position.Z, 2).ToString();
+        }
 
     }
-
-    public void PlayerModelMenu(UIMenu menu)
-    {
-        /*var playermodelmenu = MenuPool.AddSubMenu(menu, "Player Model Menu");
-        for (int i = 0; i < 1; i++) ;
-
-        //We will change our player model to the male LSPD officer
-        var malecop = new UIMenuItem("Male LSPD Officer", "");
-        playermodelmenu.AddItem(malecop);
-        playermodelmenu.OnItemSelect += (sender, item, index) =>
-        {
-            if (item == malecop)
-            {
-                Game.Player.ChangeModel("S_M_Y_COP_01");
-            }
-        };*/
-    }
-
-    public void VehicleMenu(UIMenu menu)
-    {
-        /**/
-    }
-
-    public void WeaponMenu(UIMenu menu)
-    {
-        
-    }
-
-    //Now we will add all of our sub menus into our main menu, and set the general information of the entire menu
-    
 }
 
