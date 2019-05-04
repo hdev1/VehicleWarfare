@@ -31,11 +31,11 @@ namespace VehicleWarfare
                 if (item == weaponShopItem)
                 {
                     mainMenu.Visible = false;
-                    MenuManager.WeaponShop.Visible = true;
+                    UIManager.WeaponShop.Visible = true;
                 } else if (item == vehicleMenuItem)
                 {
                     mainMenu.Visible = false;
-                    MenuManager.VehicleMenu.Visible = true;
+                    UIManager.VehicleMenu.Visible = true;
                 }
             };
 

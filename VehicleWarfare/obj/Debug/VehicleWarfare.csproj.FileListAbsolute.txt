@@ -34,3 +34,4 @@ D:\Documents\VehicleWarfare\VehicleWarfare\VehicleWarfare\obj\Debug\VehicleWarfa
 D:\Documents\VehicleWarfare\VehicleWarfare\VehicleWarfare\obj\Debug\VehicleWarfare.csproj.CopyComplete
 D:\Documents\VehicleWarfare\VehicleWarfare\VehicleWarfare\obj\Debug\VehicleWarfare.dll
 D:\Documents\VehicleWarfare\VehicleWarfare\VehicleWarfare\obj\Debug\VehicleWarfare.pdb
+D:\Documents\VehicleWarfare\VehicleWarfare\VehicleWarfare\bin\Debug\NativeUI.pdb

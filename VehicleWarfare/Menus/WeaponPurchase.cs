@@ -85,7 +85,7 @@ namespace VehicleWarfare.Menus
 
             weapons.OnMenuClose += sender =>
             {
-                MenuManager.WeaponShop.Visible = true;
+                UIManager.WeaponShop.Visible = true;
             };
         }
 

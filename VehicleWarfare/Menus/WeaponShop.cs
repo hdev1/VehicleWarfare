@@ -39,9 +39,9 @@ namespace VehicleWarfare.Menus
                 {
                     if (item.GetUIMenuItem().Text == selectedItem.Text)
                     {
-                        WeaponPurchase.ApplyToMenu(item, MenuManager.WeaponPurchase);
+                        WeaponPurchase.ApplyToMenu(item, UIManager.WeaponPurchase);
 
-                        MenuManager.WeaponPurchase.Visible = true;
+                        UIManager.WeaponPurchase.Visible = true;
                         weapons.Visible = false;
                     }
                 }
@@ -49,7 +49,7 @@ namespace VehicleWarfare.Menus
 
             weapons.OnMenuClose += sender =>
             {
-                MenuManager.MainMenu.Visible = true;
+                UIManager.MainMenu.Visible = true;
             };
 
             return weapons;

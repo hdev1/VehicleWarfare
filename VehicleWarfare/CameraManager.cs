@@ -25,18 +25,27 @@ namespace VehicleWarfare
 
             public static void RemoveCamera() {
                 World.RenderingCamera = null;
+                Game.Player.CanControlCharacter = true;
+                Game.Player.IgnoredByEveryone = false;
+                Game.Player.IsInvincible = false;
                 Game.Player.Character.Position = new Vector3(Game.Player.Character.Position.X, Game.Player.Character.Position.Y, Game.Player.Character.Position.Z + 10.0f);
                 Game.Player.Character.FreezePosition = false;
             }
-            public static void SetCamera(CameraLocation camera) {
+            public static void SetCamera(CameraLocation camera, bool isPlayerInvisible) {
                 Vector3 position = new Vector3();
                 Vector3 rotation = new Vector3();
                 if (camera == CameraLocation.DesertGarage) {
                     //position = ;
                     MoveCamera(
-                        new Vector3(1923.77f, 3747.29f, 32.94f), out position,
-                        new Vector3(-5.0f, 0.0f, 157.0f), out rotation
+                        Garage.DesertGarageCameraPosition, out position,
+                        Garage.DesertGarageCameraRotation, out rotation
                     );
+                }
+
+                if (isPlayerInvisible) {
+                    Game.Player.CanControlCharacter = false;
+                    Game.Player.IgnoredByEveryone = true;
+                    Game.Player.IsInvincible = true;
                 }
                 // Teleport player to load world
                 

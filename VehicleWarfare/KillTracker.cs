@@ -6,33 +6,61 @@ using System.Threading.Tasks;
 using GTA;
 using GTA.Math;
 using GTA.Native;
+using System.Drawing;
 
 namespace VehicleWarfare
 {
 
     public static class KillTracker
     {
-        private static List<int> PedList = new List<int>();
-        private static int PedTally = 0;
+        private static List<int> PedsKilled = new List<int>();
 
-        private static List<int> VehicleList = new List<int>();
-        private static int VehicleTally = 0;
+        private static List<int> VehiclesDestroyed = new List<int>();
 
+
+        static Point World3DToScreen2d(Vector3 pos)
+        {
+        var x2dp = new OutputArgument();
+        var y2dp = new OutputArgument();
+
+        GTA.Native.Function.Call<bool>(GTA.Native.Hash._WORLD3D_TO_SCREEN2D, pos.X, pos.Y, pos.Z, x2dp, y2dp);
+        return new Point((int)x2dp.GetResult<float>(), (int)y2dp.GetResult<float>());
+        }
         public static void Update()
         {
-            Ped[] peds = World.GetNearbyPeds(Game.Player.Character, 2000);
-            Vector3 position = Game.Player.Character.Position;
-            Vehicle[] vehicles = World.GetNearbyVehicles(position, 2000);
+            Ped[] peds = World.GetNearbyPeds(Game.Player.Character, 1000.0f);
+            
+            VehicleTracker.GetNearbyVehiclesByFilter(Game.Player.Character.Position, 
+                Filters.IsVehicleDestroyedByPlayer
+            ).ForEach(
+                veh => {
+                    if (!VehiclesDestroyed.Contains(veh.GetHashCode()))
+                    {
+                        int killReward = 0;
 
+                        if (Filters.IsPoliceVehicle(veh))
+                        {
+                            killReward = 100;
+                        }
+                        else
+                        {
+                            killReward = 5;
+                        }
 
+                        Game.Player.Money += killReward;
+                        VehiclesDestroyed.Add(veh.GetHashCode());
+                    }
+                }
+            );
+
+            // TODO: PedTracker.cs
             for (int i = 0; i < peds.Length; i++)
             {
                 if (peds[i].Exists() && peds[i].HasBeenDamagedBy(Game.Player.Character) && peds[i].IsDead)
                 {
-                    if (!PedList.Contains(peds[i].GetHashCode()))
+                    if (!PedsKilled.Contains(peds[i].GetHashCode()))
                     {
-                        PedTally = PedTally + 1;
-                        PedList.Add(peds[i].GetHashCode());
+                        PedsKilled.Add(peds[i].GetHashCode());
 
                         int killReward = 0;
 
@@ -70,62 +98,6 @@ namespace VehicleWarfare
                     }
                 }
             }
-
-            for (int i = 0; i < vehicles.Length; i++)
-            {
-                for (var x = 0; x < VehicleTracker.SavedVehicles.ToList().Count; x++)
-                {
-                    /*var vehicle = VehicleTracker.SavedVehicles.ToList()[x];
-                    //UI.Notify(vehicle.
-                    //.GetHashCode().ToString() + " - " + vehicles[i].GetHashCode().ToString());
-                    if (vehicle.GameVehicle.DisplayName == vehicles[i].DisplayName)
-                    {
-                        if (!vehicles[i].IsDriveable)
-                        {
-                            VehicleTracker.SavedVehicles[x].IsSpawned = false;
-                            for (var index = 0; index < VehicleTracker.Blips.ToList().Count; index++)
-                            {
-                                var blip = VehicleTracker.Blips.ToList()[index];
-                                if (blip.Key == Game.Player.Character.CurrentVehicle.DisplayName)
-                                {
-                                    blip.Value.Remove();
-                                    VehicleTracker.Blips.Remove(blip.Key);
-                                }
-                            }
-                        }
-                    }*/
-                }
-
-                if (vehicles[i].Exists() && vehicles[i].HasBeenDamagedBy(Game.Player.Character) && !vehicles[i].IsDriveable)
-                {
-                    if (!VehicleList.Contains(vehicles[i].GetHashCode()))
-                    {
-                        VehicleTally = VehicleTally + 1;
-                        VehicleList.Add(vehicles[i].GetHashCode());
-
-                        int killReward = 0;
-
-                        if (vehicles[i].Model == VehicleHash.Police
-                            || vehicles[i].Model == VehicleHash.Police2
-                            || vehicles[i].Model == VehicleHash.Police3
-                            || vehicles[i].Model == VehicleHash.Police4
-                            || vehicles[i].Model == VehicleHash.Policeb
-                            || vehicles[i].Model == VehicleHash.PoliceT
-                            )
-                        {
-
-                            killReward = 10;
-                        }
-                        else
-                        {
-                            killReward = 5;
-                        }
-
-                        Game.Player.Money += killReward;
-                    }
-                }
-            }
-
 
         }
     }

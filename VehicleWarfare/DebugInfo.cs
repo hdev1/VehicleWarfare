@@ -19,8 +19,8 @@ namespace VehicleWarfare
             Bar1 = new TextTimerBar("CR XYZ", "");
             Bar2 = new TextTimerBar("CP XYZ", "");
 
-            MenuManager.TimerBarPool.Add(Bar1);
-            MenuManager.TimerBarPool.Add(Bar2);
+            UIManager.TimerBarPool.Add(Bar1);
+            UIManager.TimerBarPool.Add(Bar2);
         }
     }
 }

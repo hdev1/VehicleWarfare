@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GTA;
+using GTA.Math;
 using NativeUI;
 
 namespace VehicleWarfare
@@ -14,7 +15,10 @@ namespace VehicleWarfare
         public static float vehicleArmorMultiplier = 1.0f;
         private static BarTimerBar vehicleDamageBar;
         public static List<SavedVehicle> SavedVehicles;
+        public static List<Vehicle> NearbyVehicles = new List<Vehicle>();
+        public static int VehicleTally = 0;
         
+        public static readonly float NearbyVehicleRadius = 1000.0f;
         public static void Init()
         {
             SavedVehicles = new List<SavedVehicle>();
@@ -61,19 +65,21 @@ namespace VehicleWarfare
                             vehicle.GameVehicle.EngineTorqueMultiplier = 10.0f;
                         }
                         //vehicle.GameVehicle.EnginePowerMultiplier = 50.0f;
-                        
                 }
                 else
                 {
                     vehicle.NitrousTimer.Stop();
                 }
             }
-
-
         }
 
+        private static void UpdateNearbyVehicles(){
+            NearbyVehicles = World.GetNearbyVehicles(Game.Player.Character, NearbyVehicleRadius).ToList();
+        }
         public static void Update()
         {
+            UpdateNearbyVehicles();
+
             // Debugging
             if (SavedVehicles.Count > 0)
             {
@@ -118,6 +124,58 @@ namespace VehicleWarfare
                 }
 
             }
+
+        }
+
+        public static void LoadDataIntoVehicle(SavedVehicle data) {
+            //TODO            
+        }
+
+        public static List<Vehicle> GetNearbyVehiclesByFilter(Vector3 origin, Func<Vehicle, bool> filter) {
+            return GetNearbyVehiclesByFilter(origin, filter, NearbyVehicles);
+        }
+
+        public static List<Vehicle> GetNearbyVehiclesByFilter(Vector3 origin, Func<Vehicle, bool> filter, List<Vehicle> sourceList) {
+            List<Vehicle> _vehs = new List<Vehicle>();
+            foreach (var veh in sourceList) {
+                if (filter.Invoke(veh))  {
+                    _vehs.Add(veh);
+                }
+            }
+            return _vehs;
+        }
+
+        public static void GetNearbyVehiclesByFilterAndInvokeAction(Vector3 origin, Func<Vehicle, bool> filter, Action<Vehicle> action) {
+            foreach (var veh in NearbyVehicles) {
+                if (filter.Invoke(veh))  {
+                    action.Invoke(veh);
+                }
+            }
+        }
+
+        public static List<Vehicle> GetDriveableNearbyVehicles(Vector3 origin, Func<Vehicle, bool> filter, List<Vehicle> sourceList) {
+            List<Vehicle> _vehs = new List<Vehicle>();
+            foreach (var veh in sourceList) {
+                if (veh.IsDriveable) _vehs.Add(veh);
+            }
+            return _vehs;
+        }
+        
+        
+
+        public static List<Vehicle> GetNearbyVehiclesByRadius(Vector3 origin, float radius) {
+            return GetNearbyVehiclesByRadius(origin, radius, NearbyVehicles);
+        }
+
+        public static List<Vehicle> GetNearbyVehiclesByRadius(Vector3 origin, float radius, List<Vehicle> sourceList) {
+            List<Vehicle> _vehs = new List<Vehicle>();
+            foreach (var veh in sourceList) {
+                if (World.GetDistance(origin, veh.Position) < radius) {
+                    _vehs.Add(veh);
+                }
+            }
+            return _vehs;
         }
     }
+    
 }

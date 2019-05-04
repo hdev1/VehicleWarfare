@@ -26,5 +26,8 @@ namespace VehicleWarfare
         public bool NitrousActivated = false;
         public Stopwatch NitrousTimer = new Stopwatch();
         public Stopwatch NitrousTick = new Stopwatch();
+
+        // Vehicle info
+        
     }
 }
