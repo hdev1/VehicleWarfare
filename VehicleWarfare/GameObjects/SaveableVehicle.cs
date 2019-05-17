@@ -9,7 +9,7 @@ using GTA.Math;
 
 namespace VehicleWarfare
 {
-    public class SavedVehicle
+    public class SaveableVehicle
     {
         public Vehicle GameVehicle;
         public float ArmorLevel = 1;

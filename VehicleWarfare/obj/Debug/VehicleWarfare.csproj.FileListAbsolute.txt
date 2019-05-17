@@ -34,4 +34,6 @@ D:\Documents\VehicleWarfare\VehicleWarfare\VehicleWarfare\obj\Debug\VehicleWarfa
 D:\Documents\VehicleWarfare\VehicleWarfare\VehicleWarfare\obj\Debug\VehicleWarfare.csproj.CopyComplete
 D:\Documents\VehicleWarfare\VehicleWarfare\VehicleWarfare\obj\Debug\VehicleWarfare.dll
 D:\Documents\VehicleWarfare\VehicleWarfare\VehicleWarfare\obj\Debug\VehicleWarfare.pdb
-D:\Documents\VehicleWarfare\VehicleWarfare\VehicleWarfare\bin\Debug\NativeUI.pdb
+D:\Documents\VehicleWarfare\VehicleWarfare\VehicleWarfare\bin\Debug\Newtonsoft.Json.dll
+D:\Documents\VehicleWarfare\VehicleWarfare\VehicleWarfare\bin\Debug\Newtonsoft.Json.pdb
+D:\Documents\VehicleWarfare\VehicleWarfare\VehicleWarfare\bin\Debug\Newtonsoft.Json.xml

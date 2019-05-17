@@ -39,6 +39,9 @@
     <Reference Include="ScriptHookVDotNet2">
       <HintPath>C:\Users\hdev\Documents\ScriptHookVDotNet2.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:\Users\hdev\Documents\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -51,24 +54,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlipManager.cs" />
-    <Compile Include="KillTracker.cs" />
+    <Compile Include="Controllers\BlipController.cs" />
+    <Compile Include="Controllers\KillController.cs" />
     <Compile Include="Main.cs" />
-    <Compile Include="UIManager.cs" />
-    <Compile Include="Menus\MainMenu.cs" />
-    <Compile Include="Menus\VehicleMenu.cs" />
-    <Compile Include="Menus\WeaponShop.cs" />
-    <Compile Include="Menus\WeaponPurchase.cs" />
-    <Compile Include="DebugInfo.cs" />
+    <Compile Include="UI\UIController.cs" />
+    <Compile Include="UI\Menus\MainMenu.cs" />
+    <Compile Include="UI\Menus\VehicleMenu.cs" />
+    <Compile Include="UI\Menus\WeaponShopMenu.cs" />
+    <Compile Include="UI\Menus\WeaponPurchaseMenu.cs" />
+    <Compile Include="Helpers\Debugger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShopWeapon.cs" />
-    <Compile Include="SavedVehicle.cs" />
-    <Compile Include="VehicleTracker.cs" />
-    <Compile Include="Filters.cs" />
-    <Compile Include="HUD.cs" />
-    <Compile Include="Garage.cs" />
-    <Compile Include="CameraManager.cs" />
+    <Compile Include="GameObjects\ShopWeapon.cs" />
+    <Compile Include="GameObjects\SaveableVehicle.cs" />
+    <Compile Include="Controllers\VehicleController.cs" />
+    <Compile Include="Helpers\Filters.cs" />
+    <Compile Include="Game\Garage.cs" />
+    <Compile Include="Controllers\CameraController.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>del "$(ProjectDir)bin\Debug\ScriptHook*.dll"

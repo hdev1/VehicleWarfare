@@ -9,7 +9,7 @@ using GTA.Native;
 
 namespace VehicleWarfare
 {
-        public static class CameraManager {
+        public static class CameraController {
             public static Camera CurrentCamera;
 
             public enum CameraLocation {

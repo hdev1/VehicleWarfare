@@ -39,13 +39,12 @@ namespace VehicleWarfare
         public static float GetHandlingStat(Vehicle vehicle) => ((vehicle.MaxTraction / HighestVehicleTraction) * 0.5f) + ((vehicle.MaxBraking / HighestVehicleBraking) * 0.5f);
         private static void ShowUI()
         {
-            //NativeUI.UIResRectangle.Draw(200, 200, 200, 200, System.Drawing.Color.White);
             showUI = true;
             switch (CurrentScreen) {
                 case Screens.SelectCar:
-                    UIManager.UIElements.Add(
+                    UIController.UIElements.Add(
                         groupName + "Test",
-                        new UIElementManager(
+                        new UIElementController(
                             new NativeUI.Elements.NativeRectangle(new Point(300, 300), new Size(100, 20), Color.FromArgb(150, 0, 0, 0)
                         )
                     ));
@@ -56,13 +55,12 @@ namespace VehicleWarfare
         }
 
         private static void HideUI() {
-            UIManager.RemoveGroup(groupName);
+            UIController.RemoveGroup(groupName);
             showUI = false;
         }
         private static void ClearUI()
         {
-            //UIManager.UIElements.Remove("GARAGE_UI_TEXT");
-            UIManager.RemoveGroup(groupName);
+            UIController.RemoveGroup(groupName);
         }
 
         public static void ShowVehicle(VehicleHash vehicleHash)
@@ -80,7 +78,7 @@ namespace VehicleWarfare
 
         public static void Enter()
         {
-            CameraManager.SetCamera(CameraManager.CameraLocation.DesertGarage, true);
+            CameraController.SetCamera(CameraController.CameraLocation.DesertGarage, true);
             CurrentScreen = Screens.SelectCar;
             ShowUI();
             ShowVehicle(VehicleHash.Adder);
@@ -93,7 +91,7 @@ namespace VehicleWarfare
             Game.Player.IgnoredByEveryone = false;
             Game.Player.IsInvincible = false;
 
-            CameraManager.RemoveCamera();
+            CameraController.RemoveCamera();
             RemoveVehicle();
             HideUI();
             IsEntered = false;

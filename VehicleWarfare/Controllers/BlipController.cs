@@ -8,7 +8,7 @@ using GTA.Math;
 
 namespace VehicleWarfare
 {
-    class BlipManager
+    class BlipController
     {
         private static Dictionary<string, Blip> _blips;
 
@@ -39,11 +39,11 @@ namespace VehicleWarfare
         public static void Update()
         {
             // Update vehicles
-            foreach (var savedVehicle in VehicleTracker.SavedVehicles)
+            foreach (var SaveableVehicle in VehicleController.SaveableVehicles)
             {
-                if (_blips.ContainsKey(savedVehicle.GameVehicle.GetHashCode().ToString()))
+                if (_blips.ContainsKey(SaveableVehicle.GameVehicle.GetHashCode().ToString()))
                 {
-                    _blips[savedVehicle.GameVehicle.GetHashCode().ToString()].Position = savedVehicle.GameVehicle.Position;
+                    _blips[SaveableVehicle.GameVehicle.GetHashCode().ToString()].Position = SaveableVehicle.GameVehicle.Position;
 
                 }
             }

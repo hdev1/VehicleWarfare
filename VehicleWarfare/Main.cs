@@ -11,7 +11,7 @@ using GTA.Native;
 using NativeUI;
 using VehicleWarfare;
 using VehicleWarfare.Menus;
-
+using Newtonsoft.Json;
 public class Main : Script
 {
 
@@ -24,9 +24,9 @@ public class Main : Script
             KeyUp += OnKeyUp;
             Tick += OnTick;
 
-            UIManager.Init();
-            BlipManager.Init();
-            DebugInfo.Init();
+            UIController.Init();
+            BlipController.Init();
+            Debugger.Init();
             
             config = ScriptSettings.Load("scripts\\settings.ini");
             OpenMenu = config.GetValue<Keys>("Options", "OpenMenu", Keys.F7);
@@ -35,8 +35,8 @@ public class Main : Script
 
             KeyDown += (o, e) =>
             {
-                if (e.KeyCode == OpenMenu && !UIManager.MenuPool.IsAnyMenuOpen())
-                    UIManager.MainMenu.Visible = !UIManager.MainMenu.Visible;
+                if (e.KeyCode == OpenMenu && !UIController.MenuPool.IsAnyMenuOpen())
+                    UIController.MainMenu.Visible = !UIController.MainMenu.Visible;
             };
     }
 
@@ -48,7 +48,7 @@ public class Main : Script
             Game.Player.Character.CurrentVehicle.ApplyForceRelative(new Vector3(0, 10, 10));
         }
 
-        /* foreach (var vehicle in VehicleTracker.SavedVehicles)
+        /* foreach (var vehicle in VehicleTracker.SaveableVehicles)
         {
             if (vehicle.GameVehicle.GetHashCode() == Game.Player.Character.CurrentVehicle.GetHashCode())
             {
@@ -58,7 +58,7 @@ public class Main : Script
         if (e.KeyCode == Keys.X)
         {
             /*
-            foreach (var vehicle in VehicleTracker.SavedVehicles)
+            foreach (var vehicle in VehicleTracker.SaveableVehicles)
             {
                 if (vehicle.GameVehicle.GetHashCode() == Game.Player.Character.CurrentVehicle.GetHashCode())
                 {
@@ -66,7 +66,7 @@ public class Main : Script
                 }
             }
             */
-            DebugInfo.Bar1.Text = GTA.UI.WorldToScreen(Game.Player.LastVehicle.Position).ToString();   
+            Debugger.Bar1.Text = GTA.UI.WorldToScreen(Game.Player.LastVehicle.Position).ToString();   
         }
 
         if (e.KeyCode == Keys.N)
@@ -104,6 +104,7 @@ public class Main : Script
             //new NativeUI.Elements.NativeRectangle(new Point(300, 300), new Size(100, 20), Color.FromArgb(150, 0, 0, 0)).Draw();
             var v = Game.Player.Character.CurrentVehicle;
             uint hash = 3204302209;
+            
             //World.ShootBullet(v.Position, World.GetNearbyVehicles(Game.Player.Character, 100.0f)[0].GetBoneCoord(0), Game.Player.Character, WeaponHash.AssaultRifle, 100);
             
         }
@@ -133,7 +134,7 @@ public class Main : Script
             model.MarkAsNoLongerNeeded();
         }
         if (e.KeyCode == Keys.O) {
-            CameraManager.CurrentCamera.Position = new Vector3(CameraManager.CurrentCamera.Position.X, CameraManager.CurrentCamera.Position.Y, CameraManager.CurrentCamera.Position.Z - 0.1f);
+            CameraController.CurrentCamera.Position = new Vector3(CameraController.CurrentCamera.Position.X, CameraController.CurrentCamera.Position.Y, CameraController.CurrentCamera.Position.Z - 0.1f);
 
         }
     }
@@ -141,7 +142,7 @@ public class Main : Script
     private void OnKeyUp(object sender, KeyEventArgs e) {
         if (e.KeyCode == Keys.X)
         {
-            foreach (var vehicle in VehicleTracker.SavedVehicles)
+            foreach (var vehicle in VehicleController.SaveableVehicles)
             {
                 if (vehicle.GameVehicle.GetHashCode() == Game.Player.Character.CurrentVehicle.GetHashCode())
                 {
@@ -153,13 +154,12 @@ public class Main : Script
     private void OnTick(object sender, EventArgs e)
     {
         // Process menus
-        UIManager.Update();
-        KillTracker.Update();
-        VehicleTracker.Update();
-        BlipManager.Update();
-        UIManager.TimerBarPool.Draw();
-        HUD.Update();
-        if (CameraManager.CurrentCamera != null) {
+        UIController.Update();
+        KillController.Update();
+        VehicleController.Update();
+        BlipController.Update();
+        UIController.TimerBarPool.Draw();
+        if (CameraController.CurrentCamera != null) {
             //DebugInfo.Bar1.Text = Math.Round(CameraManager.CurrentCamera.Rotation.X, 2).ToString() + ", " + Math.Round(CameraManager.CurrentCamera.Rotation.Y, 2).ToString() + ", " + Math.Round(CameraManager.CurrentCamera.Rotation.Z, 2).ToString();
             //DebugInfo.Bar2.Text = Math.Round(CameraManager.CurrentCamera.Position.X, 2).ToString() + ", " + Math.Round(CameraManager.CurrentCamera.Position.Y, 2).ToString() + ", " + Math.Round(CameraManager.CurrentCamera.Position.Z, 2).ToString();
         }

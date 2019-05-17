@@ -9,7 +9,11 @@
                 "build",
                 "${workspaceFolder}/VehicleWarfare/VehicleWarfare.csproj"
             ],
-            "problemMatcher": "$tsc"
+            "problemMatcher": "$tsc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "publish",

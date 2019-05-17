@@ -10,17 +10,17 @@ using NativeUI;
 
 namespace VehicleWarfare
 {
-    public static class DebugInfo
+    public static class Debugger
     {
         public static TextTimerBar Bar1;
         public static TextTimerBar Bar2;
 
         public static void Init() {
-            Bar1 = new TextTimerBar("CR XYZ", "");
-            Bar2 = new TextTimerBar("CP XYZ", "");
+           // Bar1 = new TextTimerBar("CR XYZ", "");
+           // Bar2 = new TextTimerBar("CP XYZ", "");
 
-            UIManager.TimerBarPool.Add(Bar1);
-            UIManager.TimerBarPool.Add(Bar2);
+            //UIManager.TimerBarPool.Add(Bar1);
+            //UIManager.TimerBarPool.Add(Bar2);
         }
     }
 }
